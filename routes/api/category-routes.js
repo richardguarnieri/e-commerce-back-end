@@ -12,8 +12,7 @@ router.get('/', async (req, res) => {
     });
     res.status(200).json(categories)
   } catch (err) {
-    res.status(500).json({
-    })
+    res.status(500).json(err);
   }
 });
 
@@ -24,7 +23,7 @@ router.get('/:id', async (req, res) => {
     const { id } = req.params;
     const category = await Category.findByPk(id, {
       include: Product
-    })
+    });
     return category 
     ? res.status(200).json(category)
     : res.status(500).json({
@@ -32,12 +31,24 @@ router.get('/:id', async (req, res) => {
         data: "the provided 'id' doesn't exist" 
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(500).json(err);
   }
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   // create a new category
+  try {
+    const { category_name } = req.body;
+    const category = await Category.create({
+      category_name: category_name
+    })
+    res.status(200).json({
+      success: true,
+      data: `category '${category_name}' has been added to the database!`,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.put('/:id', (req, res) => {
