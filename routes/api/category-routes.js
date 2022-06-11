@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
   // create a new category
   try {
     const { category_name } = req.body;
-    const category = await Category.create({
+    await Category.create({
       category_name: category_name
     })
     res.status(200).json({
@@ -51,8 +51,41 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   // update a category by its `id` value
+  try {
+    const { id } = req.params;
+    const { category_name } = req.body;
+    const category = await Category.findByPk(id);
+    if (!category) {
+      return res.status(500).json({
+        success: false,
+        data: "the provided 'id' doesn't exist" 
+      })
+    }
+    if (!category_name) {
+      return res.status(500).json({
+        success: false,
+        data: "please provide a 'category_name' field" 
+      })
+    }
+    await Category.update(
+      {
+        category_name: category_name
+      },
+      {
+        where: {
+          id: id
+        }
+      }
+    );
+    res.status(200).json({
+      success: true,
+      data: `category id '${id}' has been updated and saved to the database! Its new category name is ${category_name}`,
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.delete('/:id', (req, res) => {
