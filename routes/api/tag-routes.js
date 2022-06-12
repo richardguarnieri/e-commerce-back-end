@@ -59,6 +59,39 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
+  try {
+    const { id } = req.params;
+    const { tag_name } = req.body;
+    const tag = await Tag.findByPk(id);
+    if (!tag) {
+      return res.status(500).json({
+        success: false,
+        data: "the provided 'id' doesn't exist" 
+      })
+    }
+    if (!tag_name) {
+      return res.status(500).json({
+        success: false,
+        data: "please provide a 'tag_name' field" 
+      })
+    }
+    await Tag.update(
+      {
+        tag_name: tag_name
+      },
+      {
+        where: {
+          id: id
+        }
+      }
+    );
+    res.status(200).json({
+      success: true,
+      data: `tag id '${id}' has been updated and saved to the database! Its new category name is ${tag_name}`,
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.delete('/:id', async (req, res) => {
