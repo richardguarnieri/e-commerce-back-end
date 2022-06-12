@@ -98,7 +98,7 @@ E-Commerce sales in the US grew 14.2% in 2021 - consumers spent $870.78 billion 
 
 Online interactions and business environments have been changing continuously ever since the internet began. E-Commerce's evolution is captivating – and it advances at quicker paces year-over-year.
 
-This is a back end application for an e-commerce site built on Express.js API and uses Sequelize to interact with a MySQL database.
+This is a back end application for an e-commerce site built on Express.js API and uses Sequelize to interact with a MySQL database to perform RESTful CRUD Operations.
 
 
 <p align="right"> - <a href="#home">Return to Home</a></p>
@@ -159,7 +159,16 @@ node -v
 
 <!-- How to Use -->
 ## How to Use
-First, clone this repo via HTTPS in your local computer - feel free to use any storage destination / folder of your choosing. On macOS / Windows, open the CLI (Command Line Interface) and type the following command (ensure you are located in the exact directory where you want to clone the repo):
+First off, we need to install MySQL. To do so, please review the following documentation:
+
+Windows: https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html
+
+macOS: https://dev.mysql.com/doc/refman/5.7/en/macos-installation-pkg.html
+
+Preferably, you would also install the MySQL Workbench visual tool. To do so, follow this link:
+https://www.mysql.com/products/workbench/
+
+Once MySQL is successfully installed, we can proceed to clone this repo via HTTPS in your local computer - feel free to use any storage destination / folder of your choosing. On macOS / Windows, open the CLI (Command Line Interface) and type the following command (ensure you are located in the exact directory where you want to clone the repo):
 
 ```shell
 git clone https://github.com/richardguarnieri/e-commerce-back-end.git
@@ -209,32 +218,32 @@ After execution, the app will create a Sequelize connection and an Express.js we
 
 ```shell
 GET Methods:
-localhost:3001/api/categories
-localhost:3001/api/categories/:id
-localhost:3001/api/products
-localhost:3001/api/products/:id
-localhost:3001/api/tags
-localhost:3001/api/tags:id
+localhost:3001/api/categories // find all categories
+localhost:3001/api/categories/:id // find one category by its id
+localhost:3001/api/products // find all products
+localhost:3001/api/products/:id // find one product by its id
+localhost:3001/api/tags // find all tags
+localhost:3001/api/tags:id // find one tag by its id
 
 POST Methods:
-localhost:3001/api/categories
-localhost:3001/api/products
-localhost:3001/api/tags
+localhost:3001/api/categories // create a new category
+localhost:3001/api/products // create a new product
+localhost:3001/api/tags // create a new tag
 
 PUT Methods:
-localhost:3001/api/categories/:id
-localhost:3001/api/products/:id
-localhost:3001/api/tags:id
+localhost:3001/api/categories/:id // update a category by its id value
+localhost:3001/api/products/:id // update a product by its id value
+localhost:3001/api/tags:id // update a tag by its id value
 
 DELETE Methods:
-localhost:3001/api/categories/:id
-localhost:3001/api/products/:id
-localhost:3001/api/tags:id
+localhost:3001/api/categories/:id // delete a category by its id value
+localhost:3001/api/products/:id // update a product by its id value
+localhost:3001/api/tags:id // update a tag by its id value
 ```
 
-```md
-![alt text](assets/images/screenshot.png)
-```
+The following video walkthrough explains how to use the app and each of its routes:
+
+[![Application Image](./img/video-thumbnail.png)](https://example.com)
 
 _For more examples, please refer to the [Documentation][documentation-url]._
 
