@@ -123,6 +123,8 @@ To get started you will need a couple of things - clear explanation of this belo
 ### Prerequisites
 [Node.js](https://nodejs.org/en/) as we will need it to install [Sequelize](https://sequelize.org/), [MySQL2](https://www.npmjs.com/package/mysql2), [Express.js](https://expressjs.com/) and [Dotenv](https://www.npmjs.com/package/dotenv) packages to run the application.
 
+We also need to install **MySQL** - links are provided in the next section.
+
 <p align="right"> - <a href="#home">Return to Home</a></p>
 
 ### Installation
@@ -154,12 +156,9 @@ node -v
 node -v
 ```
 
-<p align="right"> - <a href="#home">Return to Home</a></p>
+**MySQL**
 
-
-<!-- How to Use -->
-## How to Use
-First off, we need to install MySQL. To do so, please review the following documentation:
+After installing Node.js, we then proceed to install MySQL. To do so, please review the following documentation:
 
 Windows: https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html
 
@@ -168,7 +167,14 @@ macOS: https://dev.mysql.com/doc/refman/5.7/en/macos-installation-pkg.html
 Preferably, you would also install the MySQL Workbench visual tool. To do so, follow this link:
 https://www.mysql.com/products/workbench/
 
-Once MySQL is successfully installed, we can proceed to clone this repo via HTTPS in your local computer - feel free to use any storage destination / folder of your choosing. On macOS / Windows, open the CLI (Command Line Interface) and type the following command (ensure you are located in the exact directory where you want to clone the repo):
+Please ensure **MySQL** is installed correctly! This is a requirement to run the RESTful API and we will be in constant communication with the database to perform CRUD operations.
+
+<p align="right"> - <a href="#home">Return to Home</a></p>
+
+
+<!-- How to Use -->
+## How to Use
+First, clone this repo via HTTPS in your local computer - feel free to use any storage destination / folder of your choosing. On macOS / Windows, open the CLI (Command Line Interface) and type the following command (ensure you are located in the exact directory where you want to clone the repo):
 
 ```shell
 git clone https://github.com/richardguarnieri/e-commerce-back-end.git
