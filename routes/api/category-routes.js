@@ -45,12 +45,15 @@ router.post('/', async (req, res) => {
         data: "please provide a 'category_name' field" 
       })
     }
-    await Category.create({
+    const category = await Category.create({
       category_name: category_name
     })
-    res.status(200).json({
+    res.status(201).json({
       success: true,
-      data: `category '${category_name}' has been added to the database!`,
+      message: `category '${category_name}' has been added to the database!`,
+      data: category.get({
+        plain: true
+      })
     });
   } catch (err) {
     res.status(500).json(err);
@@ -112,7 +115,10 @@ router.delete('/:id', async (req, res) => {
     })
     res.status(200).json({
       success: true,
-      data: `category id '${id}' has been deleted from the database!`
+      message: `category id '${id}' has been deleted from the database!`,
+      data: category.get({
+        plain: true
+      })
     })
   } catch (err) {
     res.status(500).json(err)
