@@ -177,12 +177,60 @@ npm install
 
 Above command will install [Sequelize](https://sequelize.org/), [MySQL2](https://www.npmjs.com/package/mysql2), [Express.js](https://expressjs.com/) and [Dotenv](https://www.npmjs.com/package/dotenv) packages along all its dependencies in a newly generated folder within the e-commerce-back-end directory called node_modules/
 
-Once installation finishes, we are clear to execute the application. To do so, run the index.js file typing in the CLI the following command:
+Once installation finishes, please create an **.env** file in the root directory with the following lines:
+
+```shell
+DB_USER='your database user credentials here'
+DB_PW='your database password credentials here'
+DB_NAME='ecommerce_db'
+```
+
+Replace the text in DB_USER and DB_PW with your database credentials. If you did not add a password, leave the DB_PW field blank. Example:
+
+```shell
+DB_PW=''
+```
+
+After creating the **.env** file in the root directoy, navigate through the **/db/schema.sql** file, open it, copy the code and paste the query in MySQLWorkbench - this will create a new database called **ecommerce_db**.
+
+After creating the database, we need to feed in the tables and values, to do so, run the following command in the terminal:
+
+```shell
+npm run seed
+```
+
+This will create the tables and fill it with data - after this is done, we are now clear to execute the application. To do so, run the server.js file by typing in the CLI the following command:
 
 ```shell
 npm start
 ```
 
+After execution, the app will create a Sequelize connection and an Express.js web server. You will have the following API routes available in your "http://localhost:3001/":
+
+```shell
+GET Methods:
+localhost:3001/api/categories
+localhost:3001/api/categories/:id
+localhost:3001/api/products
+localhost:3001/api/products/:id
+localhost:3001/api/tags
+localhost:3001/api/tags:id
+
+POST Methods:
+localhost:3001/api/categories
+localhost:3001/api/products
+localhost:3001/api/tags
+
+PUT Methods:
+localhost:3001/api/categories/:id
+localhost:3001/api/products/:id
+localhost:3001/api/tags:id
+
+DELETE Methods:
+localhost:3001/api/categories/:id
+localhost:3001/api/products/:id
+localhost:3001/api/tags:id
+```
 
 ```md
 ![alt text](assets/images/screenshot.png)
