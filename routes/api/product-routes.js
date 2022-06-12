@@ -111,8 +111,29 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
+  try {
+    const { id } = req.params;
+    const product = await Product.findByPk(id);
+    if (!product) {
+      return res.status(500).json({
+        success: false,
+        data: "the provided 'id' doesn't exist" 
+      })
+    }
+    await Product.destroy({
+      where: {
+        id: id
+      }
+    })
+    res.status(200).json({
+      success: true,
+      data: `product id '${id}' has been deleted from the database!`
+    })
+  } catch (err) {
+    res.status(500).json(err)
+  }
 });
 
 module.exports = router;
