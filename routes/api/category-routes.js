@@ -39,6 +39,12 @@ router.post('/', async (req, res) => {
   // create a new category
   try {
     const { category_name } = req.body;
+    if (!category_name) {
+      return res.status(500).json({
+        success: false,
+        data: "please provide a 'category_name' field" 
+      })
+    }
     await Category.create({
       category_name: category_name
     })

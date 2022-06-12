@@ -35,15 +35,33 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   // create a new tag
+  try {
+    const { tag_name } = req.body;
+    if (!tag_name) {
+      return res.status(500).json({
+        success: false,
+        data: "please provide a 'category_name' field" 
+      })
+    }
+    await Tag.create({
+      tag_name: tag_name
+    })
+    res.status(200).json({
+      success: true,
+      data: `tag '${tag_name}' has been added to the database!`,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete on tag by its `id` value
 });
 
