@@ -129,7 +129,10 @@ router.delete('/:id', async (req, res) => {
     })
     res.status(200).json({
       success: true,
-      data: `product id '${id}' has been deleted from the database!`
+      message: `product id '${id}' has been deleted from the database!`,
+      data: product.get({
+        plain: true
+      })
     })
   } catch (err) {
     res.status(500).json(err)
