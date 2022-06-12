@@ -16,9 +16,23 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   // find a single tag by its `id`
   // including its associated Product data
+  try {
+    const { id } = req.params;
+    const tag = await Tag.findByPk(id, {
+      include: Product
+    });
+    return tag 
+    ? res.status(200).json(tag)
+    : res.status(500).json({
+        success: false,
+        data: "the provided 'id' doesn't exist" 
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.post('/', (req, res) => {
