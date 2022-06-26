@@ -249,7 +249,7 @@ localhost:3001/api/tags:id // update a tag by its id value
 
 The following video walkthrough explains how to use the app and each of its routes:
 
-[![Application Image](./img/video-thumbnail.png)](https://example.com)
+[![Application Image](./img/video-thumbnail.png)](https://youtu.be/zDpSBCxxfSg)
 
 _For more examples, please refer to the [Documentation][documentation-url]._
 
