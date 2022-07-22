@@ -243,8 +243,8 @@ localhost:3001/api/tags:id // update a tag by its id value
 
 DELETE Methods:
 localhost:3001/api/categories/:id // delete a category by its id value
-localhost:3001/api/products/:id // update a product by its id value
-localhost:3001/api/tags:id // update a tag by its id value
+localhost:3001/api/products/:id // delete a product by its id value
+localhost:3001/api/tags:id // delete a tag by its id value
 ```
 
 The following video walkthrough explains how to use the app and each of its routes:
